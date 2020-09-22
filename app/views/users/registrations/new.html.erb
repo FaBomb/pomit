@@ -1,29 +1,87 @@
-<h2>Sign up</h2>
+<div class="wrapper">
+  <!-- ヘッダー -->
+  <header>
+      <div class="logo">
+          <img src="./../images/logo.png" alt="ロゴ" width="40" height="40">
+          <div class="site_title">
+              <p id="site"><span>POMIT</span></p>
+              <p id="sub">- Community site for college students -</p>
+          </div>
+      </div>
+      <div class="nav_right">
+          <nav><a class="nav-btn" href="../profiles/my_show.html">my page</a></nav>
+          <nav><a class="nav-btn" href="../users/new.html">sign up</a></nav>
+      </div>
+  </header>
+  <!-- フォーム -->
+  <div class="form_box">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+      <div class="form">
+          <form action="" size="40" class="email">
+              <h2>Email</h2>
+              <input type="text" placeholder="〇〇.@stu.ac.jp">
+          </form>
+          <form action="" size="40" class="password">
+              <h2>Password</h2>
+              <input type="text" placeholder="5 or more characters">
+          </form>
+          <label class="login_btn">
+              <a href="../articles/index.html">Login</a>
+              <input type="button">
+          </label>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+  <!-- フッター -->
+  <footer>
+      <small>© 2020 YutaToyomi</small>
+      <ul class="sns_buttons">
+          <li>
+              <a rel="nofollow" href="http://twitter.com/share?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                  onclick="window.open(encodeURI(decodeURI(this.href)), 'tweet_window',
+                  'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                  <i class="fa fa-twitter-square"></i>
+              </a>
+          </li>
+          <li>
+              <a rel="nofollow" href="http://www.facebook.com/share.php?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                  onclick="window.open(encodeURI(decodeURI(this.href)), 'facebook_window',
+                  'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                  <i class="fa fa-facebook-square"></i>
+              </a>
+          </li>
+          <li>
+              <a rel="nofollow" href="http://line.me/R/msg/?【大学生のためのコミュニティサイト〇〇】url=【URL】"
+                  onclick="window.open(encodeURI(decodeURI(this.href)), 'line_window',
+                  'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                  <i class="fab fa-line"></i>
+              </a>
+          </li>
+      </ul>
+  </footer>
+</div>
