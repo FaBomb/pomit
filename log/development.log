@@ -1,0 +1,220 @@
+  [1m[35m (5.1ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `pomit_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `pomit_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('886156736203953900', 0)[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('886156736203953900')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('886156736203953900', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20200922105645)
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('886156736203953900')[0m
+Started GET "/" for ::1 at 2020-09-22 20:15:06 +0900
+  [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/e15cde1b48f8e99b/variables" for ::1 at 2020-09-22 20:15:07 +0900
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('886156736203953900', 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20200922105645)
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('886156736203953900')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (54.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `pomit_development`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `pomit_test`[0m
+Started GET "/" for ::1 at 2020-09-22 20:21:01 +0900
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/e1e204080a3d80ad/variables" for ::1 at 2020-09-22 20:21:01 +0900
+Started GET "/" for ::1 at 2020-09-22 20:41:50 +0900
+
+ActiveRecord::NoDatabaseError - Unknown database 'pomit_development':
+
+Started POST "/__better_errors/111a3ba144bb2cbf/variables" for ::1 at 2020-09-22 20:41:50 +0900
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE DATABASE `pomit_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE DATABASE `pomit_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+Started GET "/" for ::1 at 2020-09-22 20:43:41 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/ce23cb89754b84cd/variables" for ::1 at 2020-09-22 20:43:41 +0900
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (30.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('886156736203953900', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20200922105645)
+  [1m[35m (30.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200922105645')[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2020-09-22 11:44:28.622234', '2020-09-22 11:44:28.622234')[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('886156736203953900')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for ::1 at 2020-09-22 20:44:39 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+  Rendered statics/top.html.erb within layouts/application (Duration: 34.1ms | Allocations: 6311)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 0.0ms | Allocations: 8764)
+
+
+
+Sprockets::Rails::Helper::AssetNotFound - The asset "logo.png" is not present in the asset pipeline.:
+  app/views/statics/top.html.erb:5
+
+Started POST "/__better_errors/fccacc874b88032b/variables" for ::1 at 2020-09-22 20:44:40 +0900
+Started GET "/" for ::1 at 2020-09-22 20:49:57 +0900
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+  Rendered statics/top.html.erb within layouts/application (Duration: 465.8ms | Allocations: 48014)
+Completed 500 Internal Server Error in 472ms (ActiveRecord: 0.0ms | Allocations: 48378)
+
+
+
+Sprockets::Rails::Helper::AssetNotFound - The asset "top/function/post.png" is not present in the asset pipeline.:
+  app/views/statics/top.html.erb:40
+
+Started POST "/__better_errors/9f00c0cb88100409/variables" for ::1 at 2020-09-22 20:49:58 +0900
+Started GET "/" for ::1 at 2020-09-22 20:50:15 +0900
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+  Rendered statics/top.html.erb within layouts/application (Duration: 224.3ms | Allocations: 34981)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 300ms (Views: 298.6ms | ActiveRecord: 0.0ms | Allocations: 44630)
+
+
+Started GET "/" for ::1 at 2020-09-22 20:52:11 +0900
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+  Rendered statics/top.html.erb within layouts/application (Duration: 19.2ms | Allocations: 5205)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 111ms (Views: 107.9ms | ActiveRecord: 0.0ms | Allocations: 11810)
+
+
+Started GET "/" for ::1 at 2020-09-22 20:58:06 +0900
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in C:/my_work/portfolio/work/pomit/public/packs
+[Webpacker] Hash: 3e64cd2b267016ae634e
+Version: webpack 4.44.2
+Time: 3549ms
+Built at: 2020-09-22 20:58:14
+                                          Asset      Size            Chunks                         Chunk Names
+         js/application-9afcbb5693aa87623e69.js   124 KiB       application  [emitted] [immutable]  application
+     js/application-9afcbb5693aa87623e69.js.map   139 KiB       application  [emitted] [dev]        application
+    js/js\charange_flow-befc46a963598bc985a4.js  9.01 KiB  js\charange_flow  [emitted] [immutable]  js\charange_flow
+js/js\charange_flow-befc46a963598bc985a4.js.map  9.37 KiB  js\charange_flow  [emitted] [dev]        js\charange_flow
+             js/js\flow-4bbe2d9fa571bf2f72f9.js  5.02 KiB           js\flow  [emitted] [immutable]  js\flow
+         js/js\flow-4bbe2d9fa571bf2f72f9.js.map  5.08 KiB           js\flow  [emitted] [dev]        js\flow
+             js/js\func-c77bb77e31bef65c4d2a.js  5.84 KiB           js\func  [emitted] [immutable]  js\func
+         js/js\func-c77bb77e31bef65c4d2a.js.map  6.26 KiB           js\func  [emitted] [dev]        js\func
+        js/js\help_flow-d9a63460ccd54cdd6f35.js  8.38 KiB      js\help_flow  [emitted] [immutable]  js\help_flow
+    js/js\help_flow-d9a63460ccd54cdd6f35.js.map  8.74 KiB      js\help_flow  [emitted] [dev]        js\help_flow
+            js/js\image-850724d6f25e53988ca5.js  4.22 KiB          js\image  [emitted] [immutable]  js\image
+        js/js\image-850724d6f25e53988ca5.js.map  3.99 KiB          js\image  [emitted] [dev]        js\image
+       js/js\skill_flow-7ab18d724df6d8605d4b.js  8.64 KiB     js\skill_flow  [emitted] [immutable]  js\skill_flow
+   js/js\skill_flow-7ab18d724df6d8605d4b.js.map  9.01 KiB     js\skill_flow  [emitted] [dev]        js\skill_flow
+              js/js\top-256075ce8e20b345f09f.js  4.02 KiB            js\top  [emitted] [immutable]  js\top
+          js/js\top-256075ce8e20b345f09f.js.map  3.78 KiB            js\top  [emitted] [dev]        js\top
+                                  manifest.json  2.63 KiB                    [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+Entrypoint js\charange_flow = js/js\charange_flow-befc46a963598bc985a4.js js/js\charange_flow-befc46a963598bc985a4.js.map
+Entrypoint js\flow = js/js\flow-4bbe2d9fa571bf2f72f9.js js/js\flow-4bbe2d9fa571bf2f72f9.js.map
+Entrypoint js\func = js/js\func-c77bb77e31bef65c4d2a.js js/js\func-c77bb77e31bef65c4d2a.js.map
+Entrypoint js\help_flow = js/js\help_flow-d9a63460ccd54cdd6f35.js js/js\help_flow-d9a63460ccd54cdd6f35.js.map
+Entrypoint js\image = js/js\image-850724d6f25e53988ca5.js js/js\image-850724d6f25e53988ca5.js.map
+Entrypoint js\skill_flow = js/js\skill_flow-7ab18d724df6d8605d4b.js js/js\skill_flow-7ab18d724df6d8605d4b.js.map
+Entrypoint js\top = js/js\top-256075ce8e20b345f09f.js js/js\top-256075ce8e20b345f09f.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./app/javascript/packs/js/charange_flow.js] 5.09 KiB {js\charange_flow} [built]
+[./app/javascript/packs/js/flow.js] 1.15 KiB {js\flow} [built]
+[./app/javascript/packs/js/func.js] 1.97 KiB {js\func} [built]
+[./app/javascript/packs/js/help_flow.js] 4.48 KiB {js\help_flow} [built]
+[./app/javascript/packs/js/image.js] 349 bytes {js\image} [built]
+[./app/javascript/packs/js/skill_flow.js] 4.74 KiB {js\skill_flow} [built]
+[./app/javascript/packs/js/top.js] 164 bytes {js\top} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered statics/top.html.erb within layouts/application (Duration: 8078.9ms | Allocations: 12335)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8142ms (Views: 8138.7ms | ActiveRecord: 0.0ms | Allocations: 18997)
+
+
+Started GET "/" for ::1 at 2020-09-22 20:58:28 +0900
+Processing by StaticsController#top as HTML
+  Rendering statics/top.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered statics/top.html.erb within layouts/application (Duration: 54.4ms | Allocations: 8786)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 117ms (Views: 112.1ms | ActiveRecord: 0.0ms | Allocations: 15430)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-22 21:00:36 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 2.1ms | Allocations: 609)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 77.8ms | Allocations: 8122)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 179ms (Views: 143.3ms | ActiveRecord: 5.6ms | Allocations: 21708)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-22 21:00:42 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 2.1ms | Allocations: 206)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 14.4ms | Allocations: 1855)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 113ms (Views: 103.9ms | ActiveRecord: 0.0ms | Allocations: 8622)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-22 21:00:46 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 51.4ms | ActiveRecord: 0.0ms | Allocations: 7182)
+
+

@@ -1,0 +1,114 @@
+<!-- スタート -->
+<div class="start">
+    <div class="start_content">
+        <div class="start_box">
+            <%= image_tag "logo.png" %>
+            <div class="site_ex">
+                <h4>POMIT</h4>
+                <p>Let's Create World!!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ヘッダー -->
+<header>
+    <div class="back_box">
+        <div class="site">
+            <%= image_tag "logo.png" %>
+            <div class="title">
+                <h1>POMIT</h1>
+                <p>- Community site for college students -</p>
+            </div>
+        </div>
+    </div>
+    <div class="head">
+        <%= image_tag "top/トップページイラスト.svg" %>
+        <div class="nav_right">
+            <nav><%= link_to "MY PAGE", new_user_registration_path, class: "nav-btn" %></nav>
+            <nav><%= link_to "LOGIN", new_user_session_path, class: "nav-btn" %></nav>
+            <nav><%= link_to "SIGN UP", new_user_registration_path, class: "nav-btn" %></nav>
+        </div>
+        <div class="site_mes">
+            <p>大学生になったんだから何かに挑戦したい...<br>だけど、なかなか一歩踏み出せない...<br>こんな経験、みなさんありませんか？</p>
+            <h3>POMITはその一歩をあと押しします</h3>
+        </div>
+    </div>
+</header>
+<!-- 説明 -->
+<section>
+    <div class="post">
+        <%= image_tag "top/function/post.png" %>
+        <hr>
+        <div class="ex">
+            <h4>POSTING</h4>
+            <p>自分のやりたいことを発信して仲間を募ろう！<br>
+                最終的なイメージや参加条件、そのプロジェクトに<br>
+                参加することで得られるスキルなど詳細に発信する<br>
+                ことができます。<br>
+                勉強会や学校の課題など手伝ってほしいこと毎に<br>
+                カテゴリを分けて投稿できます。
+            </p>
+        </div>
+    </div>
+    <div class="search">
+        <div class="ex">
+            <h4>SEARCHING</h4>
+            <p>参加したい！興味がある！プロジェクトに<br>
+                リクエストを送ってみよう！<br>
+                カテゴリ毎や大学、学部毎にプロジェクトを<br>
+                検索できます。<br>
+                リクエストを承認してもらいやすくするために<br>
+                マイページを充実させて自分が貢献できる<br>
+                ポイントをアピールしよう！
+            </p>
+        </div>
+        <hr>
+        <%= image_tag "top/function/search.png" %>
+    </div>
+    <div class="chat">
+        <%= image_tag "top/function/chat.png" %>
+        <hr>
+        <div class="ex">
+            <h4>ACTION</h4>
+            <p>実際にプロジェクトを進めていこう！<br>
+                リクエストが承認されればそのプロジェクトの<br>
+                チャットルームに参加できます。<br>
+                チャットルームで今後の日程や計画を<br>
+                話し合いましょう！
+            </p>
+        </div>
+    </div>
+    <label class="lets">
+        <h3>POMITをはじめよう！</h3>
+        <%= link_to "START", new_user_session_path %>
+    </label>
+</section>
+<!-- フッター -->
+<footer>
+    <small>© 2020 YutaToyomi</small>
+    <ul class="sns_buttons">
+        <li>
+            <a rel="nofollow" href="http://twitter.com/share?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'tweet_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fa fa-twitter-square"></i>
+            </a>
+        </li>
+        <li>
+            <a rel="nofollow" href="http://www.facebook.com/share.php?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'facebook_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fa fa-facebook-square"></i>
+            </a>
+        </li>
+        <li>
+            <a rel="nofollow" href="http://line.me/R/msg/?【大学生のためのコミュニティサイト〇〇】url=【URL】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'line_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fab fa-line"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<%= javascript_pack_tag 'js/top' %>
