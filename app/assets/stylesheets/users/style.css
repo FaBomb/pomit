@@ -159,6 +159,24 @@ label,em{
     width: 50%;
     padding: 2%;
 }
+input[type=checkbox]{
+    margin: -10px 0 20px 0;
+    width: 20px;
+}
+label[for=user_remember_me]{
+    font-size: 14px;
+    font-weight: normal;
+}
+.btns{
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.btns a{
+    margin: 0 10px 0 10px;
+    width: 150px;
+    padding: 0 5px 0 5px;
+}
 /* フッター */
 footer{
     position: absolute;
