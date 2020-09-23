@@ -1,26 +1,75 @@
-<h2>Log in</h2>
+<%= stylesheet_link_tag "users/style", :media => "all" %>
+<div class="wrapper">
+  <!-- ヘッダー -->
+  <header>
+      <div class="logo">
+          <%= image_tag "logo.png", :size =>'40x40'%> 
+          <div class="site_title">
+              <p id="site"><span>POMIT</span></p>
+              <p id="sub">- Community site for college students -</p>
+          </div>
+      </div>
+      <div class="nav_right">
+          <nav><%= link_to "TOP PAGE", root_path, class: "nav-btn" %></nav>
+          <nav><%= link_to "SIGN UP", new_user_registration_path, class: "nav-btn" %></nav>
+      </div>
+  </header>
+  <!-- フォーム -->
+  <div class="form_box">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form">
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, :placeholder => "Enter your email...", autofocus: true, autocomplete: "email" %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, :placeholder => "Enter your password...", autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Log in", class:"submit_btn" %>
+        </div>
+        <% end %>
+        <div class="btns">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+  <!-- フッター -->
+  <footer>
+    <small>© 2020 YutaToyomi</small>
+    <ul class="sns_buttons">
+        <li>
+            <a rel="nofollow" href="http://twitter.com/share?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'tweet_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fa fa-twitter-square"></i>
+            </a>
+        </li>
+        <li>
+            <a rel="nofollow" href="http://www.facebook.com/share.php?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'facebook_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fa fa-facebook-square"></i>
+            </a>
+        </li>
+        <li>
+            <a rel="nofollow" href="http://line.me/R/msg/?【大学生のためのコミュニティサイト〇〇】url=【URL】"
+                onclick="window.open(encodeURI(decodeURI(this.href)), 'line_window',
+                'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                <i class="fab fa-line"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
+</div>
+    
