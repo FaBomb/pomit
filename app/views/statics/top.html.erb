@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "statics/statics", :media => "all" %>
 <!-- スタート -->
 <div class="start">
     <div class="start_content">
@@ -24,9 +25,13 @@
     <div class="head">
         <%= image_tag "top/トップページイラスト.svg" %>
         <div class="nav_right">
-            <nav><%= link_to "MY PAGE", new_user_registration_path, class: "nav-btn" %></nav>
-            <nav><%= link_to "LOGIN", new_user_session_path, class: "nav-btn" %></nav>
-            <nav><%= link_to "SIGN UP", new_user_registration_path, class: "nav-btn" %></nav>
+            <% if logged_in? %>
+                <nav><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "nav-btn"%></nav>
+                <nav><%= link_to "MY PAGE", articles_index_path, class: "nav-btn" %></nav>
+            <% else %>
+                <nav><%= link_to "LOGIN", new_user_session_path, class: "nav-btn" %></nav>
+                <nav><%= link_to "SIGN UP", new_user_registration_path, class: "nav-btn" %></nav>
+            <% end %>
         </div>
         <div class="site_mes">
             <p>大学生になったんだから何かに挑戦したい...<br>だけど、なかなか一歩踏み出せない...<br>こんな経験、みなさんありませんか？</p>
