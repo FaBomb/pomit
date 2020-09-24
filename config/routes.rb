@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'profiles/edit'
   get 'articles/index'
   get 'articles/show'
-  get 'articles/new'
+  get 'articles/new' => 'articles#new'
+  post 'articles' => 'articles#create'
   root "statics#top"
 
   devise_for :users, controllers: {   registrations: 'users/registrations',

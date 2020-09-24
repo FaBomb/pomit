@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  title: MyString
+  image: MyString
+  content: MyText
+  to_join: MyText
+  skill: MyText
+
+two:
+  category: MyString
+  title: MyString
+  image: MyString
+  content: MyText
+  to_join: MyText
+  skill: MyText
