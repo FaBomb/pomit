@@ -62,3 +62,5 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 gem 'dotenv-rails'
+
+gem 'kaminari'

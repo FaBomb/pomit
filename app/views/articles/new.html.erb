@@ -77,14 +77,14 @@
         </div>
     <!-- メインコンテンツ -->
         <div class="topic">
-            <img src="../../HTML/images/category/question.jpg" id="headImg" class="head_img" alt="カテゴリ">
+            <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"カテゴリ" %>
             <div class="back">
                 <div class="content">
                     <div class="title2">
                         <%= form_for @article do |f| %>
                         <div class="category_tab">
                             <p>CATEGORY<br>
-                                <%= f.select :category, [["SKILL", "SKILL"], ["CHALLENGE", "CHALLENGE"], ["HELP", "HELP"]], include_blank: "選択して下さい" ,:onchange => 'set_img(this.selectedIndex)'%>
+                                <%= f.select :category, [["SKILL", "SKILL"], ["CHALLENGE", "CHALLENGE"], ["HELP", "HELP"]], {include_blank: "選択して下さい"} , {:onchange => 'image_change(this.selectedIndex)'} %>
                             </p>
                         </div>
                         <div class="type_title">
@@ -95,9 +95,10 @@
                             <p>IMAGE</p>
                             <label>
                                 結果イメージの画像を選択してください
-                                <%= f.file_field :image %>
+                                <%= f.file_field :image, onchange:"previewImage(this)" %>
                             </label>
                         </div>
+                        <%= image_tag "no-img.png", id:"preview", alt:"プレビュー", size: '300x200' %>
                         <div class="type_content">
                             <p>CONTENT</p>
                             <%= f.text_area :content, wrap:"hard", :placeholder => "内容を入力してください" %>
@@ -146,5 +147,28 @@
     </footer>
 </div>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<%= javascript_pack_tag 'js/func' %>
-<%= javascript_pack_tag 'js/image' %>
+
+<%= javascript_pack_tag 'js/func', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'js/image', 'data-turbolinks-track': 'reload' %>
+
+<script>
+    let list_img = new Array();
+    list_img[0] = new Array("<%= asset_path('no-img.png') %>");
+    list_img[1] = new Array("<%= asset_path('category/skill.jpg') %>");
+    list_img[3] = new Array("<%= asset_path('category/help.jpg') %>");
+    list_img[2] = new Array("<%= asset_path('category/challenge.jpg') %>");
+    let elem = document.getElementById("headImg")
+    
+    function image_change(sel_val){
+        elem.setAttribute("src", list_img[sel_val]);
+    }
+</script>
+<script>
+    function previewImage(obj){
+        var fileReader = new FileReader();
+        fileReader.onload = (function() {
+            document.getElementById('preview').src = fileReader.result;
+        });
+        fileReader.readAsDataURL(obj.files[0]);
+    }
+</script>

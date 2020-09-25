@@ -53,12 +53,12 @@ a{
 .category_tab select{
     width: 20%;
     height: 40px;
+    margin-top: 10px;
     padding-left: 1%;
     outline: none;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .category_tab p,.type_title p,.sel_image p,.type_content p,.type_conditions p,.type_skill p{
     font-size: 24px;
@@ -95,7 +95,6 @@ a{
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .sel_image textarea,.type_content textarea,.type_conditions textarea,.type_skill textarea{
     width: 50%;
@@ -105,8 +104,8 @@ a{
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+
 .post_btn{
     display: inline-block;
     cursor: pointer; 
@@ -132,7 +131,7 @@ a{
     background-color: #f6f6f6;
     top: 240px;
     bottom: 0;
-    padding: 30px 0 300px 0;
+    padding: 30px 0 150px 0;
     box-shadow: 0 -100px 80px -80px #000000;
     transition: width 1s;
 }
@@ -153,6 +152,9 @@ a{
     width: 100%;
     height: 100%;
     text-align: center;
+}
+.title2 p{
+    margin-top: 20px;
 }
 .title h1{
     margin-bottom: 2%;
@@ -376,9 +378,25 @@ a{
 .fa-search:hover{
     opacity: 50%;
 }
-input::placeholder {
+textarea::placeholder,input::placeholder {
     color: #dddddd;
 }
+textarea::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+textarea::-webkit-scrollbar-track{
+    border-radius: 5px;
+}
+textarea::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: #dfdfdf;
+    box-shadow: 0 0 1px rgb(184, 184, 184) inset;
+}
+textarea::-webkit-scrollbar-corner{
+    outline: none;
+}
+
 h3{
     margin: 30px 0 10px 0;
 }
@@ -565,7 +583,6 @@ footer{
     position: absolute;
     bottom: 0;
     width: 100%;
-    margin-top: 240px;
     display: flex;
     justify-content: space-around;
     align-items: center;

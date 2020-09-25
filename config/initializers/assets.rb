@@ -16,3 +16,4 @@ Rails.application.config.assets.precompile += %w( users/style )
 Rails.application.config.assets.precompile += %w( statics/statics )
 Rails.application.config.assets.precompile += %w( articles/style )
 Rails.application.config.assets.precompile += %w( articles/style_show )
+

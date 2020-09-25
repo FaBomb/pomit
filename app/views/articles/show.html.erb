@@ -1,2 +1,201 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<%= stylesheet_link_tag "articles/style", :media => "all" %>
+<div class="wrapper">
+<!-- サイドバー -->
+    <div class="sidebar">
+        <button class="nav_toggle">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+        <div class="nav">
+            <a href="../top.html"><img class="logo" src="../images/logo.png" alt="logo" width="60px" height="60px"></a>
+            <form class="search" action="" method="post">
+                <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
+                <button><i class="fas fa-search"></i></button>
+            </form>
+            <button><a href="../profiles/my_show.html" class="new_btn">MY PAGE</a></button>
+            <button><a href="../articles/new.html" class="new_btn">POST</a></button>
+            <button><a href="###" class="new_btn">LOGOUT</a></button>
+            <h3>MY ROOM</h3>
+            <div class="container">
+                <ul class="rooms">
+                    <li><a href="../messages/show.html">CG講習会</a></li>
+                    <li><a href="../messages/show.html">物理勉強会</a></li>
+                    <li><a href="../messages/show.html">サイト作成</a></li>
+                    <li><a href="../messages/show.html">リノベプロジェクト</a></li>
+                    <li><a href="../messages/show.html">設計コンペ</a></li>
+                    <li><a href="../messages/show.html">模型手伝い</a></li>
+                    <li><a href="../messages/show.html">就職相談</a></li>
+                    <li><a href="../messages/show.html">文章添削</a></li>
+                    <li><a href="../messages/show.html">英会話</a></li>
+                    <li><a href="../messages/show.html">神楽坂ランチ研究会</a></li>
+                    <li><a href="../messages/show.html">映画鑑賞</a></li>
+                </ul>
+            </div>
+            <h4 class="search_head">SEARCH</h4>
+            <div class="category_search">
+                <h4>CATEGORY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">スキルアップ</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">チャレンジ</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">ヘルプ</a></li>
+                </ul>
+                <h4>UNIVERSITY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">青山</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">亜細亜大学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">桜美林大学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">大妻女子大学</a></li>
+                    <details>
+                        <summary>more</summary>
+                        <div class="details_content">
+                            <li class="nav_menu_li"><a href="../articles/index.html">北里大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">杏林大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">慶應義塾大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">工学院大学</a></li>
+                        </div>
+                    </details>
+                </ul>
+                <h4>FACULTY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">経営</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">法学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">理工</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">情報</a></li>
+                    <details>
+                        <summary>more</summary>
+                        <div class="details_content">
+                            <li class="nav_menu_li"><a href="../articles/index.html">建築</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">文学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">哲学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">教育</a></li>
+                        </div>
+                    </details>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- メインコンテンツ -->
+    <div class="topic">
+        <img src="../../HTML/images/category/charange.jpg" class="head_img" alt="カテゴリ">
+        <div class="back">
+            <div class="content">
+                <div class="title">
+                    <h1>〇〇しませんか？</h1>
+                    <nav class="jump">
+                        <ul>
+                            <li><%= link_to "IMAGE", articles_show_path(anchor:'sub1_title'), onclick: "func1(1)", id: "jump1" %></li>
+                            <li><%= link_to "CONTENT", articles_show_path(anchor:'sub2_title'), onclick: "func1(2)", id: "jump2" %></li>
+                            <li><%= link_to "TO JOIN", articles_show_path(anchor:'sub3_title'), onclick: "func1(3)", id: "jump3" %></li>
+                            <li><%= link_to "SKILL", articles_show_path(anchor:'sub4_title'), onclick: "func1(4)", id: "jump4" %></li>
+                        </ul>
+                        <i></i>
+                    </nav>
+                    <div class="sub1">
+                        <h2><a id="sub1_title">IMAGE</a></h2>
+                        <div class="sub1_img">
+                            <img src="../images/flow/2.jpg" alt="result1">
+                            <img src="../images/flow/3.jpg" alt="result2">
+                        </div>
+                    </div>
+                    <div class="sub2">
+                        <h2><a id="sub2_title">CONTENT</a></h2>
+                        <p class="sub2_content">ああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>あ</p>
+                    </div>
+                    <div class="sub3">
+                        <h2><a id="sub3_title">TO JOIN</a></h2>
+                        <p class="sub3_content">あ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>あ</p>
+                    </div>
+                    <div class="sub4">
+                        <h2><a id="sub4_title">SKILL</a></h2>
+                        <p class="sub4_content">あ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>ああ<br>ああああ<br>あ</p>
+                    </div>
+                    
+                </div>
+                <div class="join">
+                    <div class="request">
+                        <h3>REQUEST</h3>
+                        <form class="message" action="" method="post">
+                            <input class="join_form" type="message" name="message" placeholder="Request comment">
+                            <button class="join_btn">JOIN</button>
+                        </form>
+                    </div>
+                    <div class="member">
+                        <h3>MEMBERS</h3>
+                        <ul>
+                            <li><a href="../profiles/show.html">ユーザー1</a></li>
+                            <li><a href="../profiles/show.html">ユーザー2</a></li>
+                            <li><a href="../profiles/show.html">ユーザー3</a></li>
+                            <li><a href="../profiles/show.html">ユーザー4</a></li>
+                            <li><a href="../profiles/show.html">ユーザー5</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- フッター -->
+    <footer>
+        <small>© 2020 YutaToyomi</small>
+        <ul class="sns_buttons">
+            <li>
+                <a rel="nofollow" href="http://twitter.com/share?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                    onclick="window.open(encodeURI(decodeURI(this.href)), 'tweet_window',
+                    'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                    <i class="fa fa-twitter-square"></i>
+                </a>
+            </li>
+            <li>
+                <a rel="nofollow" href="http://www.facebook.com/share.php?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                    onclick="window.open(encodeURI(decodeURI(this.href)), 'facebook_window',
+                    'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+            <li>
+                <a rel="nofollow" href="http://line.me/R/msg/?【大学生のためのコミュニティサイト〇〇】url=【URL】"
+                    onclick="window.open(encodeURI(decodeURI(this.href)), 'line_window',
+                    'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                    <i class="fab fa-line"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+</div>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<%= javascript_pack_tag 'js/func', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'js/jump', 'data-turbolinks-track': 'reload' %>
+
+<script>
+    function func1(jumpNo){
+        const elem1 = document.getElementById("jump1")
+        const elem2 = document.getElementById("jump2")
+        const elem3 = document.getElementById("jump3")
+        const elem4 = document.getElementById("jump4")
+    
+        if(jumpNo == 2){
+          elem2.style.borderBottom = "5px solid #1E70C6";
+          elem1.style.borderBottom = "";
+          elem3.style.borderBottom = "";
+          elem4.style.borderBottom = "";
+        }
+        else if(jumpNo == 3){
+          elem3.style.borderBottom = "5px solid #1E70C6";
+          elem1.style.borderBottom = "";
+          elem2.style.borderBottom = "";
+          elem4.style.borderBottom = "";
+        }
+        else if(jumpNo == 4){
+          elem4.style.borderBottom = "5px solid #1E70C6";
+          elem1.style.borderBottom = "";
+          elem2.style.borderBottom = "";
+          elem3.style.borderBottom = "";
+        }
+        else {
+          elem1.style.borderBottom = "5px solid #1E70C6";
+          elem2.style.borderBottom = "";
+          elem3.style.borderBottom = "";
+          elem4.style.borderBottom = "";
+        }
+      };
+</script>
