@@ -5,6 +5,7 @@
 body {
     font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
     background-color: #f6f6f6;
+    scroll-behavior: smooth;
 }
 button{
     background-color: transparent;
@@ -184,8 +185,10 @@ a{
     height: 100%;
     width: 100%;
     top: -3px;
-    border-bottom: 5px solid #c5c3c3;
-    
+    border-bottom: 5px solid #c5c3c3;  
+}
+.jump_active{
+    border-bottom: 5px solid #1E70C6;
 }
 .jump ul{
     display: flex;
@@ -195,6 +198,7 @@ a{
 .sub1{
     margin: 2% 0 2% 0;
 }
+
 .sub2,.sub3,.sub4{
     margin-top: 5%;
 }
@@ -204,8 +208,8 @@ a{
     justify-content: space-around;
 }
 .sub1 img{
-    width: 45%;
-    height: 30%;
+    width: 300px;
+    height: 200px;
 }
 .sub2,.sub3,.sub4{
     position: relative;
@@ -272,6 +276,18 @@ a{
 .member{
     margin-top: 10%;
 }
+.good_btn{
+    height: 30px;
+    padding-top: 20px;
+}
+.fa-heart{
+    font-size: 16px;
+    color: rgb(248, 82, 84);
+    transition: .5s;
+}
+.fa-heart:hover{
+    opacity: 0.5;
+}
 .member ul{
     display: inline-block;
     width: 60%;
@@ -306,7 +322,9 @@ a{
 .member li:hover{
     opacity: 0.5;
 }
-
+.good .member{
+    margin: 0;
+}
 /* サイドバー */
 .sidebar{
     text-align: center;

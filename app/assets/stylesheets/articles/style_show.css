@@ -22,7 +22,6 @@ a{
     color: #333;
 }
 .wrapper{
-    margin-top: -20px;
     min-height: 100vh;
     position: relative;
 }
@@ -43,13 +42,13 @@ a{
     padding: 20px 0 0 40px;
     border-bottom: 2px  solid rgb(131, 131, 131);
 }
+
 .topic h2{
     font-size: 24px;
-    line-height: 0;
 }
 .topic h4{
     font-size: 20px;
-    margin: 20px 0 15px 0;
+    margin-top: 10px;
     line-height: 0;
 }
 .topic.show{
@@ -93,10 +92,11 @@ a{
 }
 .btns{
     position: absolute;
-    width: 100%;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
     display: flex;
-    padding: 0 40px 0 40px;
     align-items: flex-end;
     justify-content: space-between;
 }
@@ -119,22 +119,30 @@ a{
     opacity: 0.5;
 }
 .pagination{
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-top: 60px;
+    display: inline-flex;
+    margin: 20px auto 60px 50%;
+    transform: translateX(-50%);
 }
+
 .pagination>li>a {          
     border: none;     
-    color: #696969;   
+    color: #696969;  
+    padding: 5px;
+    margin: 0 5px; 
     background-color: #f6f6f6;
   }
 .pagination>.active>a {     
-    background: #8b8b8b;     
+    background: #8b8b8b; 
+    cursor: pointer;
+    color: white;    
     border-radius: 15px;    
 }
-.pagination>li>a:hover {        
+.pagination>.active>a:hover{
+    background-color: #1E70C6;
+}
+.pagination>li>a:hover {  
     border-radius: 15px;    
+    background-color: #dddddd;    
 }
 /* サイドバー */
 .sidebar{
@@ -212,6 +220,11 @@ input::placeholder {
 }
 h3{
     margin: 30px 0 10px 0;
+}
+.show h3, .show h2{
+    margin: initial;
+    font-size: initial;
+    font-weight: initial;
 }
 h4{
     margin-bottom: 10px;

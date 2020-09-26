@@ -15,7 +15,7 @@
                     <button><i class="fas fa-search"></i></button>
                 </form>
                 <button><%= link_to"MY PAGE" ,profiles_my_show_path,class:"new_btn" %></button>
-                <button><%= link_to"POST" ,articles_new_path,class:"new_btn" %></button>
+                <button><%= link_to"POST" , new_article_path,class:"new_btn" %></button>
                 <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
                 <h3>MY ROOM</h3>
                 <div class="container">
@@ -82,9 +82,9 @@
             <% @articles.each do |t| %>
             <div class="post">
                 <% if t.image_url == nil then %>
-                    <%= link_to image_tag("no-img.png",class:"post-img", alt:"画像がありません"), articles_show_path %>
+                    <%= link_to image_tag("no-img.png",class:"post-img", alt:"画像がありません"), article_path(t.id) %>
                 <% else %>
-                    <%= link_to image_tag(t.image_url,class:"post-img", alt:"最終イメージ"), articles_show_path %>
+                    <%= link_to image_tag(t.image_url,class:"post-img", alt:"最終イメージ"), article_path(t.id) %>
                 <% end %>
                 <div class="conhesive">
                     <h2><%= t.title %></h2>
@@ -103,8 +103,25 @@
                         </div>
                     </div>
                     <div class="btns">
-                        <button><i class="fas fa-heart"></i></button>
-                        <button><a href="../articles/show.html" id="more_btn">詳細</a></button>
+                        <% if current_user.already_liked?(t) %>
+                            <%=link_to article_article_like_path(id: t.id, article_id: t.id), method: :delete do%>
+                                <i class="fas fa-heart"></i>
+                            <%=t.article_likes.count%>
+                            <%end%>
+                        <% else %>
+                            <%=link_to article_article_likes_path(id: t.id, article_id: t.id), method: :post do%>
+                                <i class="far fa-heart"></i>
+                            <%=t.article_likes.count%>
+                            <%end%>
+                        <% end %>
+                        
+                        <button><%= link_to "by: "+ t.user.email ,profiles_show_path, id:"more_btn" %></button>
+
+                        <button><%= link_to"詳細" ,article_path(t.id), id:"more_btn" %></button>
+                        <% if current_user.id == t.user_id %>
+                            <button><%= link_to"編集" ,edit_article_path(t.id), id:"more_btn" %></button>
+                            <button><%= link_to"削除" ,article_path(t.id), method: :delete , id:"more_btn" %></button>
+                        <% end %>
                     </div>
                 </div>
             </div>   
@@ -142,3 +159,5 @@
 </div>
 
 <%= javascript_pack_tag 'js/func' %>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>

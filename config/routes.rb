@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   get 'profiles/show'
   get 'profiles/my_show'
   get 'profiles/edit'
-  get 'articles/index'
-  get 'articles/show'
-  get 'articles/new' => 'articles#new'
-  post 'articles' => 'articles#create'
+
+  resources :articles do
+    resources :article_likes, only: [:create, :destroy]
+  end
+
   root "statics#top"
 
   devise_for :users, controllers: {   registrations: 'users/registrations',
