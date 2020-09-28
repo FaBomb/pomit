@@ -1,2 +1,253 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<%= stylesheet_link_tag "profiles/style", :media => "all" %>
+<div class="edit">
+    <div class="wrapper">
+    <!-- サイドバー -->
+        <div class="sidebar">
+            <button class="nav_toggle">
+                <i></i>
+                <i></i>
+                <i></i>
+            </button>
+            <div class="nav">
+                <%= link_to image_tag("logo.png",width:"60px",alt:"ロゴ",class:"logo"), root_path %>
+                <form class="search" action="" method="post">
+                    <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+                <button><%= link_to"POST" ,new_article_path,class:"new_btn" %></button>
+                <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
+                <h3>MY ROOM</h3>
+                <div class="container">
+                    <ul class="rooms">
+                        <li><a href="../messages/show.html">CG講習会</a></li>
+                        <li><a href="../messages/show.html">物理勉強会</a></li>
+                        <li><a href="../messages/show.html">サイト作成</a></li>
+                        <li><a href="../messages/show.html">リノベプロジェクト</a></li>
+                        <li><a href="../messages/show.html">設計コンペ</a></li>
+                        <li><a href="../messages/show.html">模型手伝い</a></li>
+                        <li><a href="../messages/show.html">就職相談</a></li>
+                        <li><a href="../messages/show.html">文章添削</a></li>
+                        <li><a href="../messages/show.html">英会話</a></li>
+                        <li><a href="../messages/show.html">神楽坂ランチ研究会</a></li>
+                        <li><a href="../messages/show.html">映画鑑賞</a></li>
+                    </ul>
+                </div>
+                <h4 class="search_head">SEARCH</h4>
+                <div class="category_search">
+                    <h4>CATEGORY</h4>
+                    <ul class="nav_menu_ul">
+                        <li class="nav_menu_li"><a href="../articles/index.html">スキルアップ</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">チャレンジ</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">ヘルプ</a></li>
+                    </ul>
+                    <h4>UNIVERSITY</h4>
+                    <ul class="nav_menu_ul">
+                        <li class="nav_menu_li"><a href="../articles/index.html">青山</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">亜細亜大学</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">桜美林大学</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">大妻女子大学</a></li>
+                        <details>
+                            <summary>more</summary>
+                            <div class="details_content">
+                                <li class="nav_menu_li"><a href="../articles/index.html">北里大学</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">杏林大学</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">慶應義塾大学</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">工学院大学</a></li>
+                            </div>
+                        </details>
+                    </ul>
+                    <h4>FACULTY</h4>
+                    <ul class="nav_menu_ul">
+                        <li class="nav_menu_li"><a href="../articles/index.html">経営</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">法学</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">理工</a></li>
+                        <li class="nav_menu_li"><a href="../articles/index.html">情報</a></li>
+                        <details>
+                            <summary>more</summary>
+                            <div class="details_content">
+                                <li class="nav_menu_li"><a href="../articles/index.html">建築</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">文学</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">哲学</a></li>
+                                <li class="nav_menu_li"><a href="../articles/index.html">教育</a></li>
+                            </div>
+                        </details>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!-- メインコンテンツ -->
+        <div class="topic">
+            <%= form_for @profile do |f| %>
+            <% if @profile.header_image? %>
+                <%= image_tag @profile.header_image.to_s, alt:"ヘッダー", id:"headImg", class:"head_img" %>
+            <% else %>
+                <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% end %>
+            <div class="sel_image">
+                <label>
+                    HEADER IMAGE
+                    <%= f.file_field :header_image, onchange:"previewImage(this,'headImg')" %>
+                </label>
+            </div>
+            <div class="back">
+                <div class="prof">
+                    <div class="my_img">
+                        <div class="icon">
+                            <label>
+                                <%= f.file_field :icon, onchange:"previewImage(this,'userIcon')" %>
+                                <i class="far fa-user-circle"></i>
+                                <% if @profile.icon? %>
+                                    <%= image_tag @profile.icon.to_s, alt:"ユーザーアイコン" %>
+                                <% else %>
+                                    <%= image_tag "no-img.png", id:"userIcon",  alt:"ユーザーアイコン" %>
+                                <% end %>
+                            </label>
+                        </div>
+                        <div class="name">
+                            <p>
+                                <%= f.text_area :name, wrap:"hard", :placeholder => "名前を入力してください" %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="prof_ex">
+                        <h4>PROFILE</h4>
+                        <div class="prof_text">
+                            <ul>
+                                <li> 大学名：<%= f.text_field :univercity, wrap:"hard" %></li>
+                                <li>趣味：<%= f.text_field :hobby, wrap:"hard" %></li>
+                                <li>特技：<%= f.text_field :my_special, wrap:"hard" %></li>
+                                <li><i class="fab fa-twitter-square">：</i><%= f.text_field :twitter, type:"text", :placeholder => "Twitterリンク" %></li>
+                                <li><i class="fab fa-facebook-square">：</i><%= f.text_field :facebook, type:"text", :placeholder => "Facebookリンク" %></li>
+                                <li><i class="fab fa-instagram-square">：</i><%= f.text_field :insta, type:"text", :placeholder => "Instaリンク" %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro">
+                    <h3>ABOUT ME</h3>
+                    <%= f.text_area :about, wrap:"hard", class:"detail_form", :placeholder => "自己紹介を記入してください" %>
+                    <h3>SPECIALTY</h3>
+                    <ul  id="parent_special">
+                        <li>
+                            <div id="child_special">
+                                <%= f.text_area :specialty_title, wrap:"hard", class:"title_form", :placeholder => "得意分野を記入してください" %>
+                                <%= f.text_area :specialty_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="button" value="+" onclick="createArea('child_special','parent_special')">
+                    <input type="button" value="-" onclick="removeArea('parent_special')">
+
+                    <h3>SKILL/TOOL</h3>
+                    <ul  id="parent_skill">
+                        <li>
+                            <div id="child_skill">
+                                <%= f.text_area :skill_title, wrap:"hard", class:"title_form", :placeholder => "スキル/ツールを記入してください" %>
+                                <%= f.text_area :skill_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="button" value="+" onclick="createArea('child_skill','parent_skill')">
+                    <input type="button" value="-" onclick="removeArea('parent_skill')">
+
+                    <h3>QUALIFICATION</h3>
+                    <ul  id="parent_qual">
+                        <li>
+                            <div id="child_qual">
+                                <%= f.text_area :qualification_title, wrap:"hard", class:"title_form", :placeholder => "資格を記入してください" %>
+                                <%= f.text_area :qualification_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="button" value="+" onclick="createArea('child_qual','parent_qual')">
+                    <input type="button" value="-" onclick="removeArea('parent_qual')">
+                    <h3>PORTFOLIO</h3>
+                    <ul  id="parent_port">
+                        <li>
+                            <div id="child_port">
+                                <label class="port_label">
+                                    ポートフォリオを選択してください
+                                    <%= f.file_field :folio_image, onchange:"previewImage(this,'folioImg')" %>
+                                </label><br>
+                                <% if @profile.folio_image? %>
+                                    <%= image_tag @profile.folio_image.to_s, id:"folioImg", alt:"ポートフォリオプレビュー",size: '300x200'%>
+                                <% else %>
+                                    <%= image_tag "no-img.png", id:"folioImg", alt:"画像なし", size: '300x200' %>
+                                <% end %>
+                                <%= f.text_area :folio_title, wrap:"hard", class:"title_form", :placeholder => "タイトル" %>
+                                <%= f.text_area :folio_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="button" value="+" onclick="createArea('child_port','parent_port')">
+                    <input type="button" value="-" onclick="removeArea('parent_port')">
+                </div>
+                <%= f.submit "EDIT", class:"post_btn" %>
+            </div>
+            <% end %>
+        </div>
+        <!-- フッター -->
+        <footer>
+            <small>© 2020 YutaToyomi</small>
+            <ul class="sns_buttons">
+                <li>
+                    <a rel="nofollow" href="http://twitter.com/share?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                        onclick="window.open(encodeURI(decodeURI(this.href)), 'tweet_window',
+                        'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                        <i class="fa fa-twitter-square"></i>
+                    </a>
+                </li>
+                <li>
+                    <a rel="nofollow" href="http://www.facebook.com/share.php?text=【大学生のためのコミュニティサイト〇〇】&url=【URL】&hashtags=【〇〇】"
+                        onclick="window.open(encodeURI(decodeURI(this.href)), 'facebook_window',
+                        'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                </li>
+                <li>
+                    <a rel="nofollow" href="http://line.me/R/msg/?【大学生のためのコミュニティサイト〇〇】url=【URL】"
+                        onclick="window.open(encodeURI(decodeURI(this.href)), 'line_window',
+                        'width=600, height=470, toolbar=no, scrollbars=yes, resizable=yes'); return false;">
+                        <i class="fab fa-line"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>
+
+<script>
+    function createArea(childId,parentId){
+        console.log(childId)
+        let area = document.createElement('li');
+        let child = document.getElementById(childId);
+        let parent = document.getElementById(parentId);
+        area.innerHTML = child.outerHTML;
+        parent.insertBefore(area,null);
+    }
+      
+    function removeArea(parentId){
+        let element = document.getElementById(parentId);
+        let elemCount = element.childElementCount;
+        if(elemCount != 1){
+            element.removeChild(element.lastChild);
+        }
+    }
+    $(function(){
+        $('.nav_toggle').on('click', function () {
+            $('.nav_toggle, .nav, .sidebar, .topic, .back, .head_img, .message_form').toggleClass('show');
+            });
+    });
+    function previewImage(obj,name){
+        var fileReader = new FileReader();
+        fileReader.onload = (function() {
+            document.getElementById(name).src = fileReader.result;
+        });
+        fileReader.readAsDataURL(obj.files[0]);
+    }
+    $(function() {
+        $("input:not(.allow_submit)").on("keypress", function(){
+          return event.which !== 13;
+        });
+      });
+</script>

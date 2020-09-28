@@ -14,7 +14,7 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to "MY PAGE" ,profiles_my_show_path,class:"new_btn" %></button>
+                <button><%= link_to "MY PAGE" ,profiles_path,class:"new_btn" %></button>
                 <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
                 <h3>MY ROOM</h3>
                 <div class="container">
@@ -78,7 +78,15 @@
         </div>
     <!-- メインコンテンツ -->
         <div class="topic">
-            <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% if @article.category="SKILL" %>
+                <%= image_tag 'category/skill.jpg', id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% elsif @article.category="CHALLENGE" %>
+                <%= image_tag 'category/challenge.jpg', id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% elsif @article.category="HELP" %>
+                <%= image_tag 'category/help.jpg', id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% else %>
+                <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"カテゴリ" %>
+            <% end %>
             <div class="back">
                 <div class="content">
                     <div class="title2">
@@ -99,7 +107,11 @@
                                 <%= f.file_field :image, onchange:"previewImage(this)" %>
                             </label>
                         </div>
-                        <%= image_tag "no-img.png", id:"preview", alt:"プレビュー", size: '300x200' %>
+                        <% if @article.image? %>
+                            <%= image_tag @article.image.to_s, id:"preview", alt:"プレビュー",size: '300x200'%>
+                        <% else %>
+                            <%= image_tag "no-img.png", id:"preview", alt:"画像なし", size: '300x200' %>
+                        <% end %>
                         <div class="type_content">
                             <p>CONTENT</p>
                             <%= f.text_area :content, wrap:"hard", :placeholder => "内容を入力してください" %>
@@ -112,7 +124,7 @@
                             <p>SKILL</p>
                             <%= f.text_area :skill, wrap:"hard", :placeholder => "参加することで習得できるスキルを入力してください" %>
                         </div>
-                        <input class="post_btn" type="submit" value="POST">
+                        <%= f.submit "POST", class:"post_btn" %>
                         <% end %>
                     </div>
                 </div>

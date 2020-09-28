@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  get 'profiles/my_show'
-  get 'profiles/edit'
+  
+  resources :profiles
 
   resources :articles do
     resources :article_likes, only: [:create, :destroy]

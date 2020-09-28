@@ -14,7 +14,7 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to"MY PAGE" ,profiles_my_show_path,class:"new_btn" %></button>
+                <button><%= link_to"MY PAGE" ,profiles_path,class:"new_btn" %></button>
                 <button><%= link_to"POST" , new_article_path,class:"new_btn" %></button>
                 <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
                 <h3>MY ROOM</h3>
@@ -115,7 +115,7 @@
                             <%end%>
                         <% end %>
                         
-                        <button><%= link_to "by: "+ t.user.email ,profiles_show_path, id:"more_btn" %></button>
+                        <button><%= link_to "by: "+ t.user.email ,profile_path(t.user.id), id:"more_btn" %></button>
 
                         <button><%= link_to"詳細" ,article_path(t.id), id:"more_btn" %></button>
                         <% if current_user.id == t.user_id %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_103115) do
+ActiveRecord::Schema.define(version: 2020_09_27_233531) do
 
   create_table "article_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "article_id", null: false
@@ -31,6 +31,31 @@ ActiveRecord::Schema.define(version: 2020_09_26_103115) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "header_image"
+    t.string "hobby"
+    t.string "my_special"
+    t.string "insta"
+    t.string "twitter"
+    t.string "facebook"
+    t.text "about"
+    t.string "specialty_title"
+    t.text "specialty_detail"
+    t.string "skill_title"
+    t.text "skill_detail"
+    t.string "qualification_title"
+    t.text "qualification_detail"
+    t.string "folio_image"
+    t.string "folio_title"
+    t.text "folio_detail"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "univercity"
+    t.string "icon"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

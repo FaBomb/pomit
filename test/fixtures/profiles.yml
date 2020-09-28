@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  geader_image: MyString
+  hobby: MyString
+  my_special: MyString
+  insta: MyString
+  twitter: MyString
+  facebook: MyString
+  about: MyText
+  specialty_title: MyString
+  specialty_detail: MyText
+  skill_title: MyString
+  skill_detail: MyText
+  qualification_title: MyString
+  qualification_detail: MyText
+  folio_image: MyString
+  folio_title: MyString
+  folio_detail: MyText
+  user_id: 1
+
+two:
+  geader_image: MyString
+  hobby: MyString
+  my_special: MyString
+  insta: MyString
+  twitter: MyString
+  facebook: MyString
+  about: MyText
+  specialty_title: MyString
+  specialty_detail: MyText
+  skill_title: MyString
+  skill_detail: MyText
+  qualification_title: MyString
+  qualification_detail: MyText
+  folio_image: MyString
+  folio_title: MyString
+  folio_detail: MyText
+  user_id: 1

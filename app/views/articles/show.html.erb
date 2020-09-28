@@ -14,10 +14,10 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to"MY PAGE" ,profiles_my_show_path,class:"new_btn" %></button>
+                <button><%= link_to"MY PAGE" , profiles_path,class:"new_btn" %></button>
                 <button><%= link_to"POST" ,new_article_path,class:"new_btn" %></button>
                 <% if current_user.id == @article.user_id %>
-                    <button><%= link_to"EDIT" ,edit_article_path,class:"new_btn" %></button>
+                    <button><%= link_to"EDIT" ,edit_article_path(@article.id),class:"new_btn" %></button>
                 <% end %>
                 <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
                 <h3>MY ROOM</h3>
@@ -156,7 +156,7 @@
                             <div class="member">
                                 <ul>
                                     <% @article.article_liked_users.each do |user| %>
-                                    <li><%= user.email %></li>
+                                    <li><button><%= link_to user.email ,profile_path(user.id), id:"more_btn" %></button></li>
                                     <% end %>
                                 </ul>
                             </div>
