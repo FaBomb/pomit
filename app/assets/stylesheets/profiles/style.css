@@ -318,18 +318,18 @@ textarea::-webkit-scrollbar-corner{
     display: inline-block;
     width: 70%;
     height: 200px;
-    margin-bottom: 20px;
     outline: none;
     border: 1px solid lightgray;
     border-radius: 5px;
     padding-left:10px;
 }
-input[type="button"]{
+.field a{
     display: inline-block;
     text-align: center;
     font-size: 18px;
     width: 25px;
-    height: 25px;
+    height: 20px;
+    padding-bottom: 10px;
     outline: none;
     cursor: pointer;
     background-color: #7ec0cc;
@@ -337,7 +337,22 @@ input[type="button"]{
     border-radius: 50%;
     transition: .4s;
 }
-input[type="button"]:hover{
+.nested-fields a{
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    width: 25px;
+    height: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    cursor: pointer;
+    background-color: #7ec0cc;
+    border: 2px solid #7ec0cc;
+    border-radius: 50%;
+    transition: .4s;
+}
+.field a:hover,.nested-fields a:hover{
     background-color: #f6f6f6;
     border: 2px solid lightgray;
     border-radius: 50%;

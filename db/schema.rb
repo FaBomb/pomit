@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_233531) do
+ActiveRecord::Schema.define(version: 2020_09_30_165008) do
 
   create_table "article_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "article_id", null: false
@@ -33,14 +33,9 @@ ActiveRecord::Schema.define(version: 2020_09_27_233531) do
     t.integer "user_id"
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "header_image"
-    t.string "hobby"
-    t.string "my_special"
-    t.string "insta"
-    t.string "twitter"
-    t.string "facebook"
-    t.text "about"
+  create_table "explains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "specialty_title"
     t.text "specialty_detail"
     t.string "skill_title"
@@ -51,11 +46,24 @@ ActiveRecord::Schema.define(version: 2020_09_27_233531) do
     t.string "folio_title"
     t.text "folio_detail"
     t.integer "user_id"
+    t.integer "profile_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "header_image"
+    t.string "hobby"
+    t.string "my_special"
+    t.string "insta"
+    t.string "twitter"
+    t.string "facebook"
+    t.text "about"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "univercity"
     t.string "icon"
+    t.integer "explain_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

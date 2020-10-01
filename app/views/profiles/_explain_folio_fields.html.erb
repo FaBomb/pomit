@@ -1,0 +1,12 @@
+<div class = "nested-fields"> 
+    <div class="field">
+        <label class="port_label">
+            ポートフォリオを選択してください
+            <%= f.file_field :folio_image, onchange:"previewImage(this,'folioImg')" %>
+        </label><br>
+        <%= image_tag "no-img.png", id:"folioImg", alt:"ポートフォリオプレビュー", size: '300x200' %>
+        <%= f.text_area :folio_title, wrap:"hard", class:"title_form", :placeholder => "ポートフォリオのタイトルを記入してください" %>
+        <%= f.text_area :folio_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細を記入してください" %>
+    </div>
+    <%= link_to_remove_association '-',f %>
+</div>

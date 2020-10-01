@@ -64,3 +64,5 @@ gem 'cloudinary'
 gem 'dotenv-rails'
 
 gem 'kaminari'
+
+gem 'cocoon'

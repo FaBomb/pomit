@@ -1,0 +1,7 @@
+<div class = "nested-fields"> 
+    <div class="field">
+        <%= f.text_area :specialty_title, wrap:"hard", class:"title_form", :placeholder => "得意分野を記入してください" %>
+        <%= f.text_area :specialty_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細を記入してください" %>
+    </div>
+    <%= link_to_remove_association '-',f %>
+</div>

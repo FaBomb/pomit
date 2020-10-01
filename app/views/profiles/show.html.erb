@@ -158,32 +158,32 @@
                     <h3>SPECIALTY</h3>
                     <div class="box">
                         <div class="special_box">
-                            <h5><%= @profile.specialty_title %></h5>
-                            <p><%= @profile.specialty_detail %></p>
+                            <h5><%= @explain.specialty_title %></h5>
+                            <p><%= @explain.specialty_detail %></p>
                         </div>
                     </div>
                 
                     <h3>SKILL/TOOL</h3>
                     <div class="box">
                         <div class="skill_box">
-                            <h5><%= @profile.skill_title %></h5>
-                            <p><%= @profile.skill_detail %></p>
+                            <h5><%= @explain.skill_title %></h5>
+                            <p><%= @explain.skill_detail %></p>
                         </div>
                     </div>
                     <h3>QUALIFICATION</h3>
                     <div class="box">
                         <div class="qual_box">
-                            <h5><%= @profile.qualification_title %></h5>
-                            <p><%= @profile.qualification_detail %></p>
+                            <h5><%= @explain.qualification_title %></h5>
+                            <p><%= @explain.qualification_detail %></p>
                         </div>
                     </div>
                     <h3>PORTFOLIO</h3>
                     <div class="box">
                         <div class="folio_box">
-                            <%= image_tag @profile.folio_image.to_s, alt:"ポートフォリオ", width:"200px", height:"140px" %>
+                            <%= image_tag @explain.folio_image.to_s, alt:"ポートフォリオ", width:"200px", height:"140px" %>
                             <div class="folio_content">
-                                <h5><%= @profile.folio_title %></h5>
-                                <p><%= @profile.folio_detail %></p>
+                                <h5><%= @explain.folio_title %></h5>
+                                <p><%= @explain.folio_detail %></p>
                             </div>
                         </div>
                     </div>

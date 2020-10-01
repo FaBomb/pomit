@@ -6,15 +6,16 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find_by(user_id: params[:id])
+    @explains = @profile.explain
   end
 
   def new
     @profile = Profile.new
+    @profile.explains.build
   end
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.user_id = current_user.id
     if @profile.save
       redirect_to "/articles"
     else
@@ -30,9 +31,33 @@ class ProfilesController < ApplicationController
       redirect_to action: "new"
     end
   end
+  
 
   private
+
   def profile_params
-    params.require(:profile).permit(:header_image, :hobby, :my_special ,:insta, :twitter, :facebook, :about, :specialty_title, :specialty_detail, :skill_title, :skill_detail, :qualification_title, :qualification_detail, :folio_image, :folio_title, :folio_detail, :name, :univercity, :icon)
+    params.require(:profile).permit(
+      :header_image,
+      :hobby,
+      :my_special,
+      :insta,
+      :twitter,
+      :facebook,
+      :about,
+      :name,
+      :univercity,
+      :icon,
+      explains_attributes: [:id,
+                           :specialty_title,
+                           :specialty_detail,
+                           :skill_title,
+                           :skill_detail,
+                           :qualification_title,
+                           :qualification_detail,
+                           :folio_image,
+                           :folio_title,
+                           :folio_detail,
+                           :_destroy]
+    ).merge(user_id: current_user.id)
   end
 end
