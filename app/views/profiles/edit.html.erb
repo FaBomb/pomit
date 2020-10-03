@@ -32,6 +32,7 @@
                         <li><a href="../messages/show.html">映画鑑賞</a></li>
                     </ul>
                 </div>
+                <button><%= link_to "ALL PAGE", articles_path, class: "new_btn" %></button>
                 <h4 class="search_head">SEARCH</h4>
                 <div class="category_search">
                     <h4>CATEGORY</h4>
@@ -78,10 +79,10 @@
     <!-- メインコンテンツ -->
         <div class="topic">
             <%= form_for @profile do |f| %>
-            <% if @profile.header_image? %>
-                <%= image_tag @profile.header_image.to_s, alt:"ヘッダー", id:"headImg", class:"head_img" %>
+            <% if f.object.header_image? %>
+                <%= image_tag f.object.header_image.to_s, id:"headImg", class:"head_img", alt:"ヘッダー" %>
             <% else %>
-                <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"カテゴリ" %>
+                <%= image_tag "no-img.png", id:"headImg", class:"head_img", alt:"ヘッダー" %>
             <% end %>
             <div class="sel_image">
                 <label>
@@ -96,8 +97,8 @@
                             <label>
                                 <%= f.file_field :icon, onchange:"previewImage(this,'userIcon')" %>
                                 <i class="far fa-user-circle"></i>
-                                <% if @profile.icon? %>
-                                    <%= image_tag @profile.icon.to_s, alt:"ユーザーアイコン" %>
+                                <% if f.object.icon? %>
+                                    <%= image_tag f.object.icon.to_s, id:"userIcon",  alt:"ユーザーアイコン" %>
                                 <% else %>
                                     <%= image_tag "no-img.png", id:"userIcon",  alt:"ユーザーアイコン" %>
                                 <% end %>
@@ -127,62 +128,58 @@
                     <h3>ABOUT ME</h3>
                     <%= f.text_area :about, wrap:"hard", class:"detail_form", :placeholder => "自己紹介を記入してください" %>
                     <h3>SPECIALTY</h3>
-                    <ul  id="parent_special">
-                        <li>
+                    <div class="field">
+                        <%= f.fields_for :explains do |explain| %>
                             <div id="child_special">
-                                <%= f.text_area :specialty_title, wrap:"hard", class:"title_form", :placeholder => "得意分野を記入してください" %>
-                                <%= f.text_area :specialty_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                                <%= render 'explain_edit_fields', f: explain %>
                             </div>
-                        </li>
-                    </ul>
-                    <input type="button" value="+" onclick="createArea('child_special','parent_special')">
-                    <input type="button" value="-" onclick="removeArea('parent_special')">
-
+                        <% end %>
+                        <%= link_to_add_association '+',f, :explains,
+                            data: {
+                                association_insertion_node: '#child_special',
+                                association_insertion_method: 'append' }%> 
+                    </div>
                     <h3>SKILL/TOOL</h3>
-                    <ul  id="parent_skill">
-                        <li>
+                    <div class="field">
+                        <%= f.fields_for :explains do |explain| %>
                             <div id="child_skill">
-                                <%= f.text_area :skill_title, wrap:"hard", class:"title_form", :placeholder => "スキル/ツールを記入してください" %>
-                                <%= f.text_area :skill_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                                <%= render 'explain_skill_edit_fields', f: explain %>
                             </div>
-                        </li>
-                    </ul>
-                    <input type="button" value="+" onclick="createArea('child_skill','parent_skill')">
-                    <input type="button" value="-" onclick="removeArea('parent_skill')">
-
+                        <% end %>
+                        <%= link_to_add_association '+',f, :explains,
+                        partial: 'explain_skill_fields',
+                        data: {
+                            association_insertion_node: '#child_skill',
+                            association_insertion_method: 'append' }%> 
+                    </div>
                     <h3>QUALIFICATION</h3>
-                    <ul  id="parent_qual">
-                        <li>
+                    <div class="field">
+                        <%= f.fields_for :explains do |explain| %>
                             <div id="child_qual">
-                                <%= f.text_area :qualification_title, wrap:"hard", class:"title_form", :placeholder => "資格を記入してください" %>
-                                <%= f.text_area :qualification_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                                <%= render 'explain_qualification_edit_fields', f: explain %>
                             </div>
-                        </li>
-                    </ul>
-                    <input type="button" value="+" onclick="createArea('child_qual','parent_qual')">
-                    <input type="button" value="-" onclick="removeArea('parent_qual')">
+                        <% end %>
+                        <%= link_to_add_association '+',f, :explains,
+                        partial: 'explain_qualification_fields',
+                        data: {
+                            association_insertion_node: '#child_qual',
+                            association_insertion_method: 'append' }%> 
+                    </div>
                     <h3>PORTFOLIO</h3>
-                    <ul  id="parent_port">
-                        <li>
-                            <div id="child_port">
-                                <label class="port_label">
-                                    ポートフォリオを選択してください
-                                    <%= f.file_field :folio_image, onchange:"previewImage(this,'folioImg')" %>
-                                </label><br>
-                                <% if @profile.folio_image? %>
-                                    <%= image_tag @profile.folio_image.to_s, id:"folioImg", alt:"ポートフォリオプレビュー",size: '300x200'%>
-                                <% else %>
-                                    <%= image_tag "no-img.png", id:"folioImg", alt:"画像なし", size: '300x200' %>
-                                <% end %>
-                                <%= f.text_area :folio_title, wrap:"hard", class:"title_form", :placeholder => "タイトル" %>
-                                <%= f.text_area :folio_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細" %>
+                    <div class="folio_field">
+                        <%= f.fields_for :explains do |explain| %>
+                            <div id="child_folio">
+                                <%= render 'explain_folio_edit_fields', f: explain %>
                             </div>
-                        </li>
-                    </ul>
-                    <input type="button" value="+" onclick="createArea('child_port','parent_port')">
-                    <input type="button" value="-" onclick="removeArea('parent_port')">
+                        <% end %>
+                        <%= link_to_add_association '+',f, :explains,
+                        partial: 'explain_folio_fields',
+                        data: {
+                            association_insertion_node: '#child_folio',
+                            association_insertion_method: 'append' }%> 
+                    </div>
                 </div>
-                <%= f.submit "EDIT", class:"post_btn" %>
+                <input class="post_btn" type="submit" value="EDIT">
             </div>
             <% end %>
         </div>
@@ -217,26 +214,46 @@
 </div>
 
 <script>
-    function createArea(childId,parentId){
-        console.log(childId)
-        let area = document.createElement('li');
-        let child = document.getElementById(childId);
-        let parent = document.getElementById(parentId);
-        area.innerHTML = child.outerHTML;
-        parent.insertBefore(area,null);
-    }
-      
-    function removeArea(parentId){
-        let element = document.getElementById(parentId);
-        let elemCount = element.childElementCount;
-        if(elemCount != 1){
-            element.removeChild(element.lastChild);
-        }
-    }
     $(function(){
         $('.nav_toggle').on('click', function () {
             $('.nav_toggle, .nav, .sidebar, .topic, .back, .head_img, .message_form').toggleClass('show');
             });
+    });
+    $(function() {
+        $("input:not(.allow_submit)").on("keypress", function(){
+          return event.which !== 13;
+        });
+      });
+    
+    let counter = 0;
+
+    $(document).ready(function() {
+        $('.folio_field') // 
+        .on('cocoon:after-insert', function(e, insertedItem) {   
+            $("label").change('cocoon:before-insert', function(e){
+                const current = $(this).attr("id", 'imageFile_' + counter);
+                const eventParent = $(this).parent().find("img").attr("id", 'imgPreview_' + counter++);
+
+                const target = $(this)
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    eventParent.attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]); 
+            });
+        });
+
+        $(".folio_field label").change('cocoon:before-insert', function(e){
+            const current = $(this).attr("id", 'imageFile_' + counter);
+            const eventParent = $(this).parent().find("img").attr("id", 'imgPreview_' + counter++);
+
+            const target = $(this)
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                eventParent.attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]); 
+        });
     });
     function previewImage(obj,name){
         var fileReader = new FileReader();
@@ -245,9 +262,5 @@
         });
         fileReader.readAsDataURL(obj.files[0]);
     }
-    $(function() {
-        $("input:not(.allow_submit)").on("keypress", function(){
-          return event.which !== 13;
-        });
-      });
+    
 </script>

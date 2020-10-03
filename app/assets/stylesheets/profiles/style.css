@@ -323,7 +323,7 @@ textarea::-webkit-scrollbar-corner{
     border-radius: 5px;
     padding-left:10px;
 }
-.field a{
+.field a,.folio_field a{
     display: inline-block;
     text-align: center;
     font-size: 18px;
@@ -360,7 +360,7 @@ textarea::-webkit-scrollbar-corner{
 input[type="file"]{
     display: none;
 }
-#folioImg{
+.imgPreview{
     margin: 20px 0;
 }
 .port_label{

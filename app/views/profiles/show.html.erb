@@ -14,8 +14,10 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to"MY PAGE" ,profiles_path,class:"new_btn" %></button>
-                <button><%= link_to"POST" ,new_article_path,class:"new_btn" %></button>
+                <% if @profile.user_id != current_user.id %>
+                    <button><%= link_to "MY PAGE" , profile_path(current_user.id), class:"new_btn" %></button>
+                <% end %>
+                <button><%= link_to "POST" , new_article_path, class:"new_btn" %></button>
                 <% if current_user.id == @profile.user_id %>
                     <button><%= link_to"EDIT" ,edit_profile_path(@profile.user.id),class:"new_btn" %></button>
                 <% end %>
@@ -82,13 +84,10 @@
         </div>
     <!-- メインコンテンツ -->
         <div class="topic">
-            <!-- <% if current_user.id == @profile.user_id %>
-                <button><%= link_to"EDIT" ,edit_profile_path(@profile.user.id),class:"new_btn" %></button>
-            <% end %> -->
             <% if @profile.header_image? %>
                 <%= image_tag @profile.header_image.to_s, alt:"ヘッダー", id:"headImg", class:"head_img" %>
             <% else %>
-                <%= image_tag "no-img.png", alt:"画像なし", class:"result-img" %>
+                <%= image_tag "no-img.png", alt:"画像なし", class:"head_img" %>
             <% end %>
             <div class="back">
                 <div class="prof">
@@ -157,35 +156,71 @@
                     </div>
                     <h3>SPECIALTY</h3>
                     <div class="box">
-                        <div class="special_box">
-                            <h5><%= @explain.specialty_title %></h5>
-                            <p><%= @explain.specialty_detail %></p>
-                        </div>
+                        <% @explains.each do |t| %>
+                            <% if t.specialty_title? or t.specialty_detail? %>
+                                <div class="special_box">
+                                    <h5>
+                                        <%= safe_join(t.specialty_title.to_s.split("\n"), tag(:br)) %>
+                                    </h5>
+                                    <p>
+                                        <%= safe_join(t.specialty_detail.to_s.split("\n"), tag(:br)) %>
+                                    </p>
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
                 
                     <h3>SKILL/TOOL</h3>
                     <div class="box">
-                        <div class="skill_box">
-                            <h5><%= @explain.skill_title %></h5>
-                            <p><%= @explain.skill_detail %></p>
-                        </div>
+                        <% @explains.each do |t| %>
+                            <% if t.skill_title? or t.skill_detail? %>
+                                <div class="skill_box">
+                                    <h5>
+                                        <%= safe_join(t.skill_title.to_s.split("\n"), tag(:br)) %>
+                                    </h5>
+                                    <p>
+                                        <%= safe_join(t.skill_detail.to_s.split("\n"), tag(:br)) %>
+                                    </p>
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
                     <h3>QUALIFICATION</h3>
                     <div class="box">
-                        <div class="qual_box">
-                            <h5><%= @explain.qualification_title %></h5>
-                            <p><%= @explain.qualification_detail %></p>
-                        </div>
+                        <% @explains.each do |t| %>
+                            <% if t.qualification_title? or t.qualification_detail? %>
+                                <div class="qual_box">
+                                    <h5>
+                                        <%= safe_join(t.qualification_title.to_s.split("\n"), tag(:br)) %>
+                                    </h5>
+                                    <p>
+                                        <%= safe_join(t.qualification_detail.to_s.split("\n"), tag(:br)) %>
+                                    </p>
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
                     <h3>PORTFOLIO</h3>
                     <div class="box">
-                        <div class="folio_box">
-                            <%= image_tag @explain.folio_image.to_s, alt:"ポートフォリオ", width:"200px", height:"140px" %>
-                            <div class="folio_content">
-                                <h5><%= @explain.folio_title %></h5>
-                                <p><%= @explain.folio_detail %></p>
-                            </div>
-                        </div>
+                        <% @explains.each do |t| %>
+                            <% if t.folio_image? or t.folio_title? or t.folio_detail? %>
+                                <div class="folio_box">
+                                    <% if t.folio_image? %>
+                                        <%= image_tag t.folio_image.to_s, alt:"ポートフォリオ", width:"200px", height:"140px" %>
+                                    <% else %>
+                                        <%= image_tag "no-img.png", alt:"画像なし", class:"head_img" %>
+                                    <% end %>
+                                    <div class="folio_content">
+                                        <h5>
+                                            <%= safe_join(t.folio_title.to_s.split("\n"), tag(:br)) %>
+                                        </h5>
+                                        <p>
+                                            <%= safe_join(t.folio_detail.to_s.split("\n"), tag(:br)) %>
+                                        </p>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -219,6 +254,10 @@
         </footer>
     </div>
 </div>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<script src="../../JavaScript/func.js"></script>
-<script src="../../JavaScript/image.js"></script>
+<script>
+    $(function(){
+        $('.nav_toggle').on('click', function () {
+            $('.nav_toggle, .nav, .sidebar, .topic, .back, .head_img, .message_form').toggleClass('show');
+        });
+    });
+</script>

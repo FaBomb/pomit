@@ -1,0 +1,18 @@
+<div class = "nested-fields"> 
+    <% if f.object.folio_image? or f.object.folio_title? or f.object.folio_detail? %>
+        <div class="folio_field">
+                <label class="port_label">
+                    ポートフォリオを選択してください
+                    <%= f.file_field :folio_image,class: "imageFile" ,onchage: "previewImage(this,imgPreview)"%>
+                </label><br>
+                <% if f.object.folio_image? %>
+                    <%= image_tag f.object.folio_image.to_s, class: "imgPreview", alt:"ポートフォリオプレビュー", size: '300x200' %>
+                <% else %>    
+                    <%= image_tag "no-img.png", class: "imgPreview", alt:"ポートフォリオプレビュー", size: '300x200' %>
+                <% end %>
+                <%= f.text_area :folio_title, wrap:"hard", class:"title_form", :placeholder => "ポートフォリオのタイトルを記入してください" %>
+                <%= f.text_area :folio_detail, wrap:"hard", class:"detail_form", :placeholder => "詳細を記入してください" %>
+        </div>
+    <%= link_to_remove_association '-',f %>
+    <% end %>
+</div>

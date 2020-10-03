@@ -14,7 +14,7 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to "MY PAGE" ,profiles_path,class:"new_btn" %></button>
+                <button><%= link_to "MY PAGE" , profile_path(current_user.id),class:"new_btn" %></button>
                 <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
                 <h3>MY ROOM</h3>
                 <div class="container">

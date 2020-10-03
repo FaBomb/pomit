@@ -14,8 +14,8 @@
                     <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
                     <button><i class="fas fa-search"></i></button>
                 </form>
-                <button><%= link_to"MY PAGE" , profiles_path,class:"new_btn" %></button>
-                <button><%= link_to"POST" ,new_article_path,class:"new_btn" %></button>
+                <button><%= link_to "MY PAGE" , profile_path(current_user.id),class:"new_btn" %></button>
+                <button><%= link_to "POST" , new_article_path,class:"new_btn" %></button>
                 <% if current_user.id == @article.user_id %>
                     <button><%= link_to"EDIT" ,edit_article_path(@article.id),class:"new_btn" %></button>
                 <% end %>

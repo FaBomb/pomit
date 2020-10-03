@@ -32,6 +32,7 @@
                         <li><a href="../messages/show.html">映画鑑賞</a></li>
                     </ul>
                 </div>
+                <button><%= link_to "ALL PAGE", articles_path, class: "new_btn" %></button>
                 <h4 class="search_head">SEARCH</h4>
                 <div class="category_search">
                     <h4>CATEGORY</h4>
@@ -125,37 +126,49 @@
                                 <%= render 'explain_fields', f: explain %>
                             </div>
                         <% end %>
-                        <%= link_to_add_association '+',f, :explains %>
+                        <%= link_to_add_association '+',f, :explains,
+                            data: {
+                                association_insertion_node: '#child_special',
+                                association_insertion_method: 'append' }%> 
                     </div>
                     <h3>SKILL/TOOL</h3>
                     <div class="field">
                         <%= f.fields_for :explains do |explain| %>
-                            <div id="child_special">
+                            <div id="child_skill">
                                 <%= render 'explain_skill_fields', f: explain %>
                             </div>
                         <% end %>
                         <%= link_to_add_association '+',f, :explains,
-                            partial: 'explain_skill_fields' %>
+                        partial: 'explain_skill_fields',
+                        data: {
+                            association_insertion_node: '#child_skill',
+                            association_insertion_method: 'append' }%> 
                     </div>
                     <h3>QUALIFICATION</h3>
                     <div class="field">
                         <%= f.fields_for :explains do |explain| %>
-                            <div id="child_special">
+                            <div id="child_qual">
                                 <%= render 'explain_qualification_fields', f: explain %>
                             </div>
                         <% end %>
                         <%= link_to_add_association '+',f, :explains,
-                            partial: 'explain_qualification_fields' %>
+                        partial: 'explain_qualification_fields',
+                        data: {
+                            association_insertion_node: '#child_qual',
+                            association_insertion_method: 'append' }%> 
                     </div>
                     <h3>PORTFOLIO</h3>
-                    <div class="field">
+                    <div class="folio_field">
                         <%= f.fields_for :explains do |explain| %>
-                            <div id="child_special">
+                            <div id="child_folio">
                                 <%= render 'explain_folio_fields', f: explain %>
                             </div>
                         <% end %>
                         <%= link_to_add_association '+',f, :explains,
-                            partial: 'explain_folio_fields' %>
+                        partial: 'explain_folio_fields',
+                        data: {
+                            association_insertion_node: '#child_folio',
+                            association_insertion_method: 'append' }%> 
                     </div>
                 </div>
                 <input class="post_btn" type="submit" value="EDIT">
@@ -193,26 +206,46 @@
 </div>
 
 <script>
-    function createArea(childId,parentId){
-        console.log(childId)
-        let area = document.createElement('li');
-        let child = document.getElementById(childId);
-        let parent = document.getElementById(parentId);
-        area.innerHTML = child.outerHTML;
-        parent.insertBefore(area,null);
-    }
-      
-    function removeArea(parentId){
-        let element = document.getElementById(parentId);
-        let elemCount = element.childElementCount;
-        if(elemCount != 1){
-            element.removeChild(element.lastChild);
-        }
-    }
     $(function(){
         $('.nav_toggle').on('click', function () {
             $('.nav_toggle, .nav, .sidebar, .topic, .back, .head_img, .message_form').toggleClass('show');
             });
+    });
+    $(function() {
+        $("input:not(.allow_submit)").on("keypress", function(){
+          return event.which !== 13;
+        });
+      });
+    
+    let counter = 0;
+
+    $(document).ready(function() {
+        $('.folio_field') // 
+        .on('cocoon:after-insert', function(e, insertedItem) {   
+            $("label").change('cocoon:before-insert', function(e){
+                const current = $(this).attr("id", 'imageFile_' + counter);
+                const eventParent = $(this).parent().find("img").attr("id", 'imgPreview_' + counter++);
+
+                const target = $(this)
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    eventParent.attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]); 
+            });
+        });
+
+        $(".folio_field label").change('cocoon:before-insert', function(e){
+            const current = $(this).attr("id", 'imageFile_' + counter);
+            const eventParent = $(this).parent().find("img").attr("id", 'imgPreview_' + counter++);
+
+            const target = $(this)
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                eventParent.attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files[0]); 
+        });
     });
     function previewImage(obj,name){
         var fileReader = new FileReader();
@@ -221,9 +254,5 @@
         });
         fileReader.readAsDataURL(obj.files[0]);
     }
-    $(function() {
-        $("input:not(.allow_submit)").on("keypress", function(){
-          return event.which !== 13;
-        });
-      });
+    
 </script>
