@@ -1,0 +1,117 @@
+<%= stylesheet_link_tag "rooms/style", :media => "all" %>
+<div class="wrapper">
+<!-- サイドバー -->
+    <div class="sidebar">
+        <button class="nav_toggle">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+        <div class="nav">
+            <%= link_to image_tag("logo.png",width:"60px",alt:"ロゴ",class:"logo"), root_path %>
+            <form class="search" action="" method="post">
+                <input class="form_size" type="search" name="search" placeholder="Enter a keyword">
+                <button><i class="fas fa-search"></i></button>
+            </form>
+            <button><%= link_to "MY PAGE" , profile_path(current_user.id), class:"new_btn" %></button>
+            <button><%= link_to "POST" , new_article_path, class:"new_btn" %></button>
+            <button><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete ,class: "new_btn"%></button>
+            <h3>MY ROOM</h3>
+            <div class="container">
+                <ul class="rooms">
+                    <li><a href="../messages/show.html">CG講習会</a></li>
+                    <li><a href="../messages/show.html">物理勉強会</a></li>
+                    <li><a href="../messages/show.html">サイト作成</a></li>
+                    <li><a href="../messages/show.html">リノベプロジェクト</a></li>
+                    <li><a href="../messages/show.html">設計コンペ</a></li>
+                    <li><a href="../messages/show.html">模型手伝い</a></li>
+                    <li><a href="../messages/show.html">就職相談</a></li>
+                    <li><a href="../messages/show.html">文章添削</a></li>
+                    <li><a href="../messages/show.html">英会話</a></li>
+                    <li><a href="../messages/show.html">神楽坂ランチ研究会</a></li>
+                    <li><a href="../messages/show.html">映画鑑賞</a></li>
+                </ul>
+            </div>
+            <button><%= link_to "ALL PAGE", articles_path, class: "new_btn" %></button>
+            <h4 class="search_head">SEARCH</h4>
+            <div class="category_search">
+                <h4>CATEGORY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">スキルアップ</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">チャレンジ</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">ヘルプ</a></li>
+                </ul>
+                <h4>UNIVERSITY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">青山</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">亜細亜大学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">桜美林大学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">大妻女子大学</a></li>
+                    <details>
+                        <summary>more</summary>
+                        <div class="details_content">
+                            <li class="nav_menu_li"><a href="../articles/index.html">北里大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">杏林大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">慶應義塾大学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">工学院大学</a></li>
+                        </div>
+                    </details>
+                </ul>
+                <h4>FACULTY</h4>
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="../articles/index.html">経営</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">法学</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">理工</a></li>
+                    <li class="nav_menu_li"><a href="../articles/index.html">情報</a></li>
+                    <details>
+                        <summary>more</summary>
+                        <div class="details_content">
+                            <li class="nav_menu_li"><a href="../articles/index.html">建築</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">文学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">哲学</a></li>
+                            <li class="nav_menu_li"><a href="../articles/index.html">教育</a></li>
+                        </div>
+                    </details>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- メインコンテンツ -->
+    <div class="topic">
+        <div class="content">
+            <div class="title">
+                <h1>〇〇しませんか？</h1>
+                <div class="talk" id="messages" data-room_id="<%= @room.id %>">
+                    <%= render @messages %>
+                </div>
+            </div>
+            <div class="message_form">
+                <div class="type_content">
+                    <%= text_area :content, nil, data: { behavior: 'room_speaker' } ,placeholder: "ここにメッセージを入力してください", wrap: "hard", class:"chat-input" %>
+                </div>
+                <input class="post_btn" type="submit" value="SEND">
+            </div>
+            <div class="join">
+                <div class="member">
+                    <h3>MEMBERS</h3>
+                    <ul>
+                        <li><a href="../profiles/show.html">ユーザー1</a></li>
+                        <li><a href="../profiles/show.html">ユーザー2</a></li>
+                        <li><a href="../profiles/show.html">ユーザー3</a></li>
+                        <li><a href="../profiles/show.html">ユーザー4</a></li>
+                        <li><a href="../profiles/show.html">ユーザー5</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){        
+        $('.nav_toggle').on('click', function () {
+            $('.nav_toggle, .nav, .sidebar, .topic, .back, .head_img, .message_form').toggleClass('show');
+        });
+    });
+    $("#messages").prop({ scrollTop: $("#messages").prop("scrollHeight") });
+    
+</script>

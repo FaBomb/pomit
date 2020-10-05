@@ -1,0 +1,17 @@
+<% if message.user_id == current_user.id %>
+    <div class="my_talk">
+        <div class="user_name">
+            <h4><%= message.user.email %></h4>
+            <a href="../profiles/my_show.html"><i class="fas fa-user-circle"></i></a>
+        </div>
+        <p><%= safe_join(message.content.split("\n"), tag(:br)) %></p>
+    </div>
+<% else %>
+    <div class="user_talk">
+        <div class="user_name">
+            <a href="../profiles/show.html"><i class="fas fa-user-circle"></i></a>
+            <h4><%= message.user.email %></h4>
+        </div>
+        <p><%= safe_join(message.content.split("\n"), tag(:br)) %></p>
+    </div>
+<% end %>

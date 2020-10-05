@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles, dependent: :destroy
-
+  has_many :messages
+  
   has_one :profile, dependent: :destroy
+
 
   has_many :article_likes, dependent: :destroy
   has_many :article_liked_articles, through: :article_likes, source: :article
