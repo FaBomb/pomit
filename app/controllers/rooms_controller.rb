@@ -2,7 +2,8 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @room = Room.find(params[:id])
+    @article = Article.find(params[:id])
+    @room = @article.room
     @messages = @room.messages
   end
 

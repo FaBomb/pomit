@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @article_like = ArticleLike.new
+    @request = Request.new
+    @requested = Request.where(article_id: params[:id])
   end
 
   def edit
@@ -30,11 +32,13 @@ class ArticlesController < ApplicationController
   
   def new
     @article = Article.new
+    @article.build_room
   end
 
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    @article.build_room
     if @article.save
       redirect_to :action => "index"
     else
@@ -43,6 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:category, :title, :image ,:content, :to_join, :skill)
   end

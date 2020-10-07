@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :article_likes, only: [:create, :destroy]
+    resources :requests, only: [:create, :new, :destroy]
   end
 
   root "statics#top"

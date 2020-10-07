@@ -88,23 +88,29 @@ a{
 }
 .user_talk{
     background-color: white;
-    width: 80%;
     height: auto;
     display: inline-block;
     text-align: left;
     padding: 10px 20px;
-    margin: 2% 5% 0 0;
+    margin-top: 2%;
     border: 1px solid #c5c3c3;
     border-radius: 10px;
     box-shadow:1px 3px 5px rgba(0, 0, 0, 0.2);
 }
+.my{
+    text-align: right;
+    margin-right: 5%;
+}
+.other{
+    text-align: left;
+    margin-left: 5%;
+}
 .my_talk{
     background-color: white;
-    width: 80%;
     display: inline-block;
     text-align: right;
     padding: 10px 20px;
-    margin: 2% 0 0 5% ;
+    margin-top: 2%;
     border: 1px solid #c5c3c3;
     border-radius: 10px;
     box-shadow:1px 3px 5px rgba(0, 0, 0, 0.2);
