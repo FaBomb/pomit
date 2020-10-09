@@ -316,14 +316,21 @@ a{
     font-size: 16px;
     border-bottom: 2px solid #e6e5e5;
 }
-.member a{
+.member a,.member p{
     color: #8f8f8f;
 }
-.member li:hover{
-    opacity: 0.5;
+.member .join_btn{
+    margin: 10px 0;
 }
-.good .member{
-    margin: 0;
+.request p{
+    line-height: 18px;
+    font-size: 14px;
+}
+.request{
+    line-height: 0%;
+}
+.member button:hover{
+    opacity: 0.5;
 }
 /* サイドバー */
 .sidebar{

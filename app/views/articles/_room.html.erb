@@ -1,0 +1,8 @@
+<% Request.where(user_id: current_user.id).each do |user| %>
+    <% if user.user_id == current_user.id && user.permission == true %>
+        <li><%= link_to Article.find(user.article_id).title, room_path(user.article_id),data: {"turbolinks" => false} %></li>
+    <% end %>
+<% end %>
+<% Article.where(user_id: current_user.id).each do |mine| %>
+    <li><%= link_to mine.title+" (my post)", room_path(mine.id),data: {"turbolinks" => false} %></li>
+<% end %>

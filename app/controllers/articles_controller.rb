@@ -9,7 +9,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article_like = ArticleLike.new
     @request = Request.new
+    @request_user = Request.find_by(user_id: current_user.id, article_id: @article.id)
     @requested = Request.where(article_id: params[:id])
+    @requested_user = User.where(id: @requested.pluck(:user_id))
   end
 
   def edit

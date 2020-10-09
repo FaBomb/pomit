@@ -23,10 +23,12 @@
                 <h3>MY ROOM</h3>
                 <div class="container">
                     <ul class="rooms">
-                        <li><%= link_to @article.title, room_path(@article.id) %></li>
+                        <%= render 'room' %>
                     </ul>
                 </div>
+                <br>
                 <button><%= link_to "ALL PAGE", articles_path, class: "new_btn" %></button>
+                <br>
                 <h4 class="search_head">SEARCH</h4>
                 <div class="category_search">
                     <h4>CATEGORY</h4>
@@ -119,25 +121,38 @@
                         
                     </div>
                     <div class="join">
-                        <% if current_user.id != @article.user_id %>
+                        <% if current_user.id == @article.user_id %>
+                            <div class="member">
+                                <h3>REQUEST MEMBERS</h3>
+                                <ul>
+                                    <% @requested_user.each do |user| %>
+                                        <li>
+                                            <div class="request">
+                                                <% if @requested.find_by(user_id: user.id).permission == false %>
+                                                    <button><%= link_to Profile.find_by(user_id: user.id).name ,profile_path(user.id), class:"more_btn" %></button><br>
+                                                    <p><%= safe_join(@requested.find_by(user_id: user.id).message.to_s.split("\n"), tag(:br)) %></p><br>
+                                                    <%= link_to article_request_path(@article,user.id), method: :patch do %>
+                                                        <button class="join_btn">ACCEPT</button>
+                                                    <% end %>
+                                                <% end %>
+                                            </div>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% else %>
                             <div class="request">
                                 <h3>REQUEST</h3>
-                                <form class="message" action="" method="post">
-
-                                    <%= form_for [@article, @request] do |f| %>
-                                        <%= f.text_area :message, wrap:"hard", :placeholder => "Request comment" %>
-                                        <% if current_user.already_requested?(@article) %>
+                                    <%= form_for [@article,@request] do |f| %>
+                                        <% if @request_user != nil %>
                                             <%= link_to article_request_path(@article), method: :delete do %>
                                                 <button class="join_btn">CANCEL</button>
                                             <% end %>
                                         <% else %>
-                                            <%= link_to article_requests_path(@article), method: :post do %>
-                                                <button class="join_btn">JOIN</button>
-                                            <% end %>
+                                            <%= f.text_field :message, wrap:"hard", :placeholder => "Request Content",class: "join_form" %>
+                                            <%= f.submit "JOIN",class: "join_btn" %>
                                         <% end %>
                                     <% end %>
-                                    
-                                </form>
                             </div>
                         <% end %>
 
@@ -160,7 +175,7 @@
                             <div class="member">
                                 <ul>
                                     <% @article.article_liked_users.each do |user| %>
-                                        <li><button><%= link_to user.email ,profile_path(user.id), id:"more_btn" %></button></li>
+                                        <li><button><%= link_to Profile.find_by(user_id: user.id).name ,profile_path(user.id) %></button></li>
                                     <% end %>
                                 </ul>
                             </div>
@@ -169,8 +184,11 @@
                         <div class="member">
                             <h3>MEMBERS</h3>
                             <ul>
-                                <% @article.requested_users.each do |user| %>
-                                    <li><button><%= link_to user.email ,profile_path(user.id), id:"more_btn" %></button></li>
+                                <li><button><%= link_to Profile.find_by(user_id: @article.user_id).name,profile_path(@article.user_id) %></button></li>
+                                <% @requested_user.each do |user| %>
+                                    <% if @requested.find_by(user_id: user.id).permission == true %>
+                                        <li><button><%= link_to Profile.find_by(user_id: user.id).name ,profile_path(user.id) %></button></li>
+                                    <% end %>
                                 <% end %>
                             </ul>
                         </div>

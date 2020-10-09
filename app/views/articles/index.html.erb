@@ -20,17 +20,7 @@
                 <h3>MY ROOM</h3>
                 <div class="container">
                     <ul class="rooms">
-                        <li><a href="../messages/show.html">CG講習会</a></li>
-                        <li><a href="../messages/show.html">物理勉強会</a></li>
-                        <li><a href="../messages/show.html">サイト作成</a></li>
-                        <li><a href="../messages/show.html">リノベプロジェクト</a></li>
-                        <li><a href="../messages/show.html">設計コンペ</a></li>
-                        <li><a href="../messages/show.html">模型手伝い</a></li>
-                        <li><a href="../messages/show.html">就職相談</a></li>
-                        <li><a href="../messages/show.html">文章添削</a></li>
-                        <li><a href="../messages/show.html">英会話</a></li>
-                        <li><a href="../messages/show.html">神楽坂ランチ研究会</a></li>
-                        <li><a href="../messages/show.html">映画鑑賞</a></li>
+                        <%= render 'room' %>
                     </ul>
                 </div>
                 <h4 class="search_head">SEARCH</h4>
@@ -115,7 +105,7 @@
                             <%end%>
                         <% end %>
                         
-                        <button><%= link_to "by: "+ t.user.email ,profile_path(t.user.id), id:"more_btn" %></button>
+                        <button><%= link_to "by: "+ Profile.find_by(user_id: t.user_id).name ,profile_path(t.user.id), id:"more_btn" %></button>
 
                         <button><%= link_to"詳細" ,article_path(t.id), id:"more_btn" %></button>
                         <% if current_user.id == t.user_id %>
