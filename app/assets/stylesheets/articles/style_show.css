@@ -71,6 +71,13 @@ a{
     opacity: 0.7;
     transition: .2s;
 }
+.category_search input[type="submit"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+}
 .conhesive{
     position: relative;
     width: 100%;

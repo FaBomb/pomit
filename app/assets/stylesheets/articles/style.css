@@ -27,6 +27,13 @@ a{
     position: relative;
     padding-bottom: 240px;
 }
+.category_search input[type="submit"] {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+}
 /* 中身 */
 .topic{
     position: relative;
@@ -321,6 +328,9 @@ a{
 }
 .member .join_btn{
     margin: 10px 0;
+}
+.request .join_btn{
+    margin-top: 20px;
 }
 .request p{
     line-height: 18px;

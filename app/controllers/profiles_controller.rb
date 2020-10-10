@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find_by(user_id: params[:id])
     @explains = @profile.explains.where(profile_id: @profile.id)
+    @articles = Article.where(user_id: params[:id])
   end
 
   def new
@@ -19,7 +20,7 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to profile_url(@profile.user_id)
     else
-      redirect_to action: "edit"
+      redirect_to action: "new"
     end
   end
 
@@ -28,7 +29,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to profile_url(@profile.user_id)
     else
-      redirect_to action: "new"
+      redirect_to action: "edit"
     end
   end
   
@@ -47,6 +48,8 @@ class ProfilesController < ApplicationController
       :name,
       :univercity,
       :icon,
+      :faculty,
+      :department,
       explains_attributes: [:id,
                             :specialty_title,
                             :specialty_detail,

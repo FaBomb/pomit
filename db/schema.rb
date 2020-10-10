@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_113222) do
+ActiveRecord::Schema.define(version: 2020_10_10_122435) do
 
   create_table "article_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "article_id", null: false
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_10_07_113222) do
     t.string "univercity"
     t.string "icon"
     t.integer "explain_id"
+    t.string "faculty"
+    t.string "department"
   end
 
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

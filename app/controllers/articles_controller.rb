@@ -2,7 +2,20 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @articles = Article.all.page(params[:page]).per(10)
+    if params[:search] == nil
+      @articles = Article.all.page(params[:page]).per(10)
+    elsif params[:search] == ''
+      @articles = Article.all.page(params[:page]).per(10)
+    else
+      @articles = Article.where("title LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10)
+                  .or(Article.where("content LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10))
+                  .or(Article.where("to_join LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10))
+                  .or(Article.where("skill LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10))
+                  .or(Article.where("category LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10))
+                  .or(Article.where(user_id: Profile.where("univercity LIKE ? ",'%' + params[:search] + '%')).page(params[:page]).per(10))
+                  .or(Article.where(user_id: Profile.where("faculty LIKE ? ",'%' + params[:search] + '%')).page(params[:page]).per(10))
+                  .or(Article.where(user_id: Profile.where("department LIKE ? ",'%' + params[:search] + '%')).page(params[:page]).per(10))
+    end
   end
 
   def show
