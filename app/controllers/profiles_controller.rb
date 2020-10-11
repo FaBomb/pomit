@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    @profile.explains.build
     if @profile.save
       redirect_to profile_url(@profile.user_id)
     else
